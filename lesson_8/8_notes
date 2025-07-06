@@ -1,0 +1,40 @@
+# Lesson 7
+
+
+Let's go very quick:
+```c
+//IF-ELSE
+if (i > 3) {
+	...
+} else {
+	...
+}
+
+//GOTO
+int i = 0;
+
+again:
+	printf("%d\n", i);
+	i++;
+	if (i < 10) goto again;
+
+//FOR-LOOP
+for(int i = 0, i < 0; i++){
+	...
+}
+
+//DO-WHILE
+do {
+	...
+} while(i < 3);
+
+
+//SWITCH
+switch(i) {
+	case 5: printf("five"); break;
+	case 6: printf("six"); break;
+	default: printf(":("); break;
+}
+
+``` 
+
