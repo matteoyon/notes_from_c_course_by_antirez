@@ -22,4 +22,66 @@ We expand the metadata to 4 byte and we modify the ps implementation, so that wh
 # Lesson 14
 ## STRUCTSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
+When I declare a struct with multiple types inside, the memory allocated for the struct makes sure that it's aligned to the biggest type inside the struct itself.
+
+e.g.
+
+struct {
+	int num;
+	ind den
+	unsigned char c;
+}
+
+Memory:
++----+----+----+
+|num |den |cPPP|
++----+----+----+i
+
+where P is the padding.
+
+
+This is because I can declare an array of this struct.
+Be aware of the optimization:
+
+
+struct {
+	unsigned char a;
+	int foo;
+	unsigned char b;
+	int bar;
+	unsigned char c;
+	unsigned char d;
+}
+
+size: 20
++----+----+----+----+-+---+
+|aPPP|foo |bPPP|bar |c|dPP|
++----+----+----+----+-+---+
+
+struct {
+	int foo;
+	int bar;
+	unsigned char a;
+	unsigned char b;
+	unsigned char c;
+	unsigned char d;
+}
+
+size: 12
++----+----+-+-+-+-+
+|foo |bar |a|b|c|d|
++----+----+-+-+-+-+
+
+How to refer to a component of a struct?
+
+if it's a struct use the dot (.)
+
+`s.foo`
+`s.bar`
+
+if it's a pointer use the arrow (->)
+
+`s->foo`
+`s->bar`
+
 
